@@ -5,6 +5,7 @@ import swaggerUi from "swagger-ui-express";
 import prisma from "./src/config/prisma.js";
 import swaggerSpec from "./src/config/swagger.js";
 import livrosRoutes from "./src/routes/livrosRoutes.js";
+import usuariosRoutes from "./src/routes/usuariosRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/livros", livrosRoutes);
+app.use("/usuarios", usuariosRoutes);
 
 try {
   await prisma.$connect();
